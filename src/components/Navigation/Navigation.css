@@ -1,0 +1,8 @@
+.navigation {
+  border-bottom: 3px grey solid;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
