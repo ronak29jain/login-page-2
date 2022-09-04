@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import { UserAuth } from '../../context/Authcontext'
+import { UserAuth } from '../context/Authcontext'
 import GoogleButton from 'react-google-button'
-import './login.css'
+import { Link, useNavigate } from 'react-router-dom'
 
-function SignIn({ setRoute }) {
+function SignIn() {
   
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState('')
   const { googleSignIn, signIn } = UserAuth()
+  const navigate = useNavigate();
 
   const signInWithGoogle = async() => {
     try {
-      await googleSignIn();
+      await googleSignIn().then(() => {navigate('/home')});
       console.log('user is signed in using google "SignIn.js".')
     } catch (err) {
       console.log('error in signInWithGoogle function from "Signin.js" file', err)
@@ -22,7 +23,7 @@ function SignIn({ setRoute }) {
   const logIn = async() => {
     setLoginError('')
     try{
-      await signIn(email, password);
+      await signIn(email, password).then(() => {navigate('/home')});
     } catch(err) {
       console.log('error in logIn function from "Signin.js" file: ', err.message)
       setLoginError(err.message)
@@ -66,14 +67,12 @@ function SignIn({ setRoute }) {
               <GoogleButton onClick={signInWithGoogle} className='pointer' />
             </div>
 
-
             <div className="sign-in-footer">
               <p>
-                <a onClick={() => setRoute('forgotPassword')} href="#0" className="footer-link">Forgot Password ?</a>
+                <Link to="/forgot-password" className="footer-link">Forgot Password ?</Link>
               </p>
               <p className='donot-have-an-account'>
-                <span> Don't have an account? </span> 
-                <a onClick={() => setRoute('register')} href="#0" className="footer-link"> Sign up </a>
+                <span> Don't have an account? </span> <Link to="/register" className="footer-link"> Sign up </Link>
               </p>
             </div>
 

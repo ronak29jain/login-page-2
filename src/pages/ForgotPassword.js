@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
-import { UserAuth } from '../../context/Authcontext'
+import { UserAuth } from '../context/Authcontext'
+import { useNavigate } from 'react-router-dom'
 
-function ForgotPassword({ setRoute }) {
+function ForgotPassword() {
 
   const [email, setEmail] = useState('')
   const [emailErr, setEmailErr] = useState('')
   const { getLinkForResettingPassword } = UserAuth()
+  const navigate = useNavigate();
 
   const sendLink = async() => {
     setEmailErr('')
     try {
-      await getLinkForResettingPassword(email);
-      console.log('reset password link send')
-      alert('Your reset password link has been send to your email address. Please check your account');
-      setRoute('signin');
+      await getLinkForResettingPassword(email)
+      .then(() => {
+        console.log('reset password link send');
+        alert('Your reset password link has been send to your email address. Please check your account');
+        navigate("/signin");
+      });
     } catch (err) {
       console.log('error in sending the "forgot password" link: ', err.message)
       setEmailErr(err.message)

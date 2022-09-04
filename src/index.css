@@ -1,3 +1,14 @@
+:root {
+  --spacing-none: 0;
+  --spacing-extra-small: .25rem;
+  --spacing-small: .5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 2rem;
+  --spacing-extra-large: 4rem;
+  --spacing-extra-extra-large: 8rem;
+  --spacing-extra-extra-extra-large: 16rem;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -7,6 +18,37 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background: linear-gradient(89deg, #ff5edf, #04cdde); */
+
+  /* background-color: white;
+  background-image:
+    radial-gradient(midnightblue 9px, transparent 10px),
+    repeating-radial-gradient(midnightblue 0, midnightblue 4px, transparent 5px, transparent 20px, midnightblue 21px, midnightblue 25px, transparent 26px, transparent 50px);
+  background-size: 30px 30px, 90px 90px;
+  background-position: 0 0; */
+
+  /* background:
+    linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
+    linear-gradient(45deg, #ECEDDC 25%, transparent 25%);
+  background-size: 100px 100px;
+  background-color: #EC173A; */
+
+  /* background-color: #def;
+  background-image: radial-gradient(closest-side, transparent 98%, rgba(0, 0, 0, .3) 99%),
+    radial-gradient(closest-side, transparent 98%, rgba(0, 0, 0, .3) 99%);
+  background-size: 80px 80px;
+  background-position: 0 0, 40px 40px; */
+
+  background:
+    radial-gradient(black 3px, transparent 4px),
+    radial-gradient(black 3px, transparent 4px),
+    linear-gradient(#fff 4px, transparent 0),
+    linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px),
+    linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px),
+    #fff;
+  background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 }
 
 code {

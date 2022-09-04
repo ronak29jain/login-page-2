@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Navigation from '../Navigation/Navigation';
 import Home from '../Home/Home'
 import AddingProfile from '../Register/AddingProfile';
-import SignIn from '../SignIn/SignIn'
-import Register from '../Register/Register'
+import SignIn from '../../pages/SignIn'
+import Register from '../../pages/Register'
 import ForgotPassword from '../Forgot_Password/ForgotPassword';
 import Account from '../Account/Account';
 

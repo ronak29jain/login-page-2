@@ -44,10 +44,10 @@ export const AuthContextProvider = ({children}) => {
       })
   }
   
-  const addName = (name) => {
+  const addName = (name, photo) => {
     updateProfile(auth.currentUser, {
       displayName: name, 
-      photoURL: "https://example.com/jane-q-user/profile.jpg"
+      photoURL: photo
     }).then(() => {
       // Profile updated!
       // ...

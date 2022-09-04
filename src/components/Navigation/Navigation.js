@@ -1,6 +1,7 @@
 import React from 'react'
 import './Navigation.css'
 import { UserAuth } from '../../context/Authcontext';
+import { Link } from 'react-router-dom';
 
 function Navigation({ route, setRoute }) {
   
@@ -49,12 +50,22 @@ function Navigation({ route, setRoute }) {
       <div className="nav">
         
         {
-          ((user) && !(route === 'home')) 
-            ? <p onClick={() => setRoute('home')} className='nav f3 pa3 link dim black underline pointer'>Home</p>
-            : null
+          (user) 
+            // ? <p onClick={() => setRoute('home')} className='nav f3 pa3 link dim black underline pointer'>Home</p>
+            ? <div className="user-loged-out">
+                <Link to="/home" className='link'>Home</Link>
+                <Link to="/user-profile" className='link'>Profile</Link>
+                <Link to="/signin" onClick={signOut} className='link'>Sign Out</Link>
+              </div>
+            : <div className="user-loged-in">
+                <Link to="/" className='link'>Home</Link>
+                <Link to="/signin" className='link'>Signin</Link>
+                <Link to="/register" className='link'>Register</Link>
+              </div>
         }
         
-        {
+        
+        {/* {
           (user && !(route === 'account')) 
             ? <p onClick={() => setRoute('account')} className='nav f3 pa3 link dim black underline pointer'>Account</p>
             : null
@@ -75,7 +86,7 @@ function Navigation({ route, setRoute }) {
           (!user && !(route === 'register')) 
             ? <p onClick={() => setRoute('register')} className='nav f3 pa3 link dim black underline pointer'>Regiester</p>
             : null
-        }
+        } */}
 
         {/* {
           (!user && !(route === 'signin')) 

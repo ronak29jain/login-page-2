@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { UserAuth } from '../../context/Authcontext'
+import { UserAuth } from '../context/Authcontext'
 
 function Account() {
   
