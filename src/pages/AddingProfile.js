@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { UserAuth } from '../context/Authcontext';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function AddingProfile() {
   
@@ -57,6 +57,10 @@ function AddingProfile() {
     }
   }
 
+  if (user?.displayName && user?.emailVerified) {
+    return <Navigate to='/home' />
+  }
+
   if (user?.displayName) {
     return (
       <div>
@@ -64,40 +68,40 @@ function AddingProfile() {
         <h1>Please Verify your Email Address: {user.email} </h1>
         <h3>If already verified, please login again</h3>
         <button onClick={signOut} className='btn-submit'> Logout </button>
-        {/* <input onClick={signOut} className="submit" type="submit" value="Log Out"/> */}
-        {/* <input onClick={sendVerificationEmail} className="submit" type="submit" value="Resend Email"/> */}
         <button onClick={sendVerificationEmail} className='btn-submit'> Send Email Again </button>
       </div>
     )
   }
 
   return (
-    <div className='signin-form fieldset center'>
-      <div>
-        <legend className="legend">Add Details</legend>
+    <div className='adding-profile center'>
+      <div className='signin-form fieldset center'>
+        <div>
+          <legend className="legend">Add Details</legend>
 
-        <div className="input-section">
-          <label className="label">Name<sup>*</sup></label>
-          <input type="text" className='input'
-            value={displayName} onChange={(e) => setDisplayName(e.target.value)}
-            />
-        </div>
+          <div className="input-section">
+            <label className="label">Name<sup>*</sup></label>
+            <input type="text" className='input'
+              value={displayName} onChange={(e) => setDisplayName(e.target.value)}
+              />
+          </div>
 
-        <div className="input-section">
-          <label className="label">Profile Photo URL</label>
-          <input type="text" className='input' 
-            value={photoURL} onChange={(e) => setPhotoURL(e.target.value)} 
-            />
-        </div>
+          <div className="input-section">
+            <label className="label">Profile Photo URL</label>
+            <input type="text" className='input' 
+              value={photoURL} onChange={(e) => setPhotoURL(e.target.value)} 
+              />
+          </div>
 
-        <div className="input-section">
-          <label className="label">username</label>
-          <input type="text" className='input' 
-            value={userName} onChange={(e) => setUserName(e.target.value)} 
-            />
+          <div className="input-section">
+            <label className="label">username</label>
+            <input type="text" className='input' 
+              value={userName} onChange={(e) => setUserName(e.target.value)} 
+              />
+          </div>
+          <h5 className='error'>{error}</h5>
+          <button onClick={add} className='submit'> Add Name</button>
         </div>
-        <h5 className='error'>{error}</h5>
-        <button onClick={add} className='submit'> Add Name</button>
       </div>
     </div>
   )

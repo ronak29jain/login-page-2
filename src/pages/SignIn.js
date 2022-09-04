@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { UserAuth } from '../context/Authcontext'
 import GoogleButton from 'react-google-button'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 function SignIn() {
   
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState('')
-  const { googleSignIn, signIn } = UserAuth()
+  const { googleSignIn, signIn, user } = UserAuth()
   const navigate = useNavigate();
 
   const signInWithGoogle = async() => {
@@ -34,6 +34,10 @@ function SignIn() {
     if (event.key === 'Enter') {
       logIn ();
     }
+  }
+
+  if (user) {
+    return <Navigate to='/home' />
   }
 
   return (

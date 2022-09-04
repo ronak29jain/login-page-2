@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { UserAuth } from '../context/Authcontext'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 function Register() {
   
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [signUpError, setSignUpError] = useState('')
-  const { createUser } = UserAuth()
+  const { createUser, user } = UserAuth()
   const navigate = useNavigate();
 
   const signUp = async() => {
@@ -24,6 +24,10 @@ function Register() {
     if (event.key === 'Enter') {
       signUp ();
     }
+  }
+
+  if (user) {
+    return <Navigate to='/home' />
   }
   
   return (
