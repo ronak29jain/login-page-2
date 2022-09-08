@@ -10,7 +10,7 @@ import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
-import Account from './pages/Account';
+// import Account from './pages/Account';
 import AddingProfile from './pages/AddingProfile';
 import UserProfile from './pages/UserProfile';
 import Protected from './components/Protected';

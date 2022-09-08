@@ -24,8 +24,7 @@ const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
 
-  const [user, setUser] = useState({})
-  const [user0, setUser0] = useState({})
+  const [user, setUser] = useState(null)
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -34,13 +33,12 @@ export const AuthContextProvider = ({children}) => {
 
   const googleSignOut = () => {
     return signOut(auth)
-    // console.log('user loged out')
   }
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
       .then(() =>{
-        console.log('created user')
+        // console.log('created user')
       })
   }
   
@@ -57,27 +55,19 @@ export const AuthContextProvider = ({children}) => {
       // An error occurred
       // ...
     });
-    console.log('updated name');
-    setUser0(auth.currentUser)
+    // console.log('updated name');
   }
 
   const emailverification = () => {
     return sendEmailVerification(auth.currentUser)
-    // console.log('verification email sended to: ', user.email)
   }
 
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        console.log("form signinwithemailandpassword fn (Authcontext.js), userCredential: ", userCredential);
         // ...
       })
-      // .then(() => {
-      //   console.log('user is signed in using email and password "Authcontext.js".')
-      // }).catch((error) => {
-      //   console.log('error in logIn function from "Authcontext.js" file', error)
-      // });
   }
 
   const getLinkForResettingPassword = (email) => {
@@ -110,18 +100,15 @@ export const AuthContextProvider = ({children}) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged( auth, (currentUser) => {
       setUser(currentUser)
-      console.log("User (from Authcontext): ", user)
-      console.log("User Display Name (from Authcontext): ", user?.displayName)
+      // console.log("User (from Authcontext): ", user)
     })
     return () => {
       unsubscribe()
-      setUser0(auth.currentUser)
-      console.log('auth.currentUser: ', auth.currentUser)
     }
-  }, [user, user?.displayName, user0, user0?.displayName])
+  }, [user, user?.displayName])
 
   return (
-    <AuthContext.Provider value={{ googleSignIn, googleSignOut, user, createUser, addName, signIn, user0, emailverification, getLinkForResettingPassword, updateUserEmail, updateUserPassword, deleteAccount, userAuthentication }} >
+    <AuthContext.Provider value={{ googleSignIn, googleSignOut, user, createUser, addName, signIn, emailverification, getLinkForResettingPassword, updateUserEmail, updateUserPassword, deleteAccount, userAuthentication }} >
       {children}
     </AuthContext.Provider>
   )

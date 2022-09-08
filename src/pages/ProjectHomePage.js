@@ -1,6 +1,7 @@
 import React from 'react'
 import { UserAuth } from '../context/Authcontext'
 import { Navigate } from 'react-router-dom'
+import './Styles/Styles.css'
 
 function ProjectHomePage() {
   
@@ -11,7 +12,7 @@ function ProjectHomePage() {
   }
   
   return (
-    <div>
+    <div className='projecthomepage'>
       <h1>Login Page 2</h1>
     </div>
   )
